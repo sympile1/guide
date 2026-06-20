@@ -13,9 +13,8 @@ timezone: 'Asia/Shanghai'
 
 # URL
 ## 本地环境专用url
-url: https://sympile1.github.io/guide/
-root: /guide/
-permalink: :title/
+url: https://guide-sooty-nine.vercel.app
+root: /permalink: :title/
 permalink_defaults:
 pretty_urls:
   trailing_index: false # 移除链接末尾index.html
