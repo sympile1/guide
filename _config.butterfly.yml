@@ -9,33 +9,22 @@
 # Navigation Settings
 # --------------------------------------
 
-nav:
-  # Navigation bar logo image
-  logo:
-  display_title: true
-  display_post_title: true
-  # Whether to fix navigation bar
-  fixed: false
+# Navigation bar logo image
+logo:
+   display_title: true
+   display_post_title: true
 
-# --------------------------------------
+# Whether to fix navigation bar
+fixed: false
+
 # Code Blocks Settings
-# --------------------------------------
-
+# --------------------
 code_blocks:
-  # Code block theme: darker / pale night / light / ocean / false
-  theme: light
-  macStyle: false
-  # Code block height limit (unit: px)
-  height_limit: false
-  word_wrap: false
-
-  # Toolbar
-  copy: true
-  language: true
-  # true: shrink the code blocks | false: expand the code blocks | none: expand code blocks and hide the button
-  shrink: false
-  fullpage: false
-
+    theme: light
+    macStyle: false
+    height_limit: false
+    word_wrap: false
+    
 # Social media links
 # Formal:
 #   icon: link || the description || color
@@ -62,9 +51,11 @@ disable_top_img: false
 default_top_img:
 
 # The banner image of index page（首页banner核心）
-index_img: https://bpic.588ku.com/back_our/20210529/bg/aa60a98c4b97e292ff8f72963d3c7db6_17267.png
+index_img: /img/banner.jpg
 # 遮罩透明度，只保留这一行index_mask
-index_mask: 0.35
+index_mask: 0
+
+banner_gradient: false
 
 # Note: tag page, not tags page
 tag_img:
@@ -245,7 +236,6 @@ noticeOutdate:
 # Footer Settings
 # --------------------------------------
 footer:
-  nav:
   owner:
     enable: true
     since: 2025
@@ -861,7 +851,7 @@ canvas_nest:
   # Color of lines, default: '0,0,0'; RGB values: (R,G,B).(note: use ',' to separate.)
   color: '0,0,255'
   # The opacity of line (0~1)
-  opacity: 0.7
+  opacity: 0
   # The z-index property of the background
   zIndex: -1
   # The number of lines
@@ -1047,7 +1037,7 @@ css_prefix: true
 # Insert the code to head (before '</head>' tag) and the bottom (before '</body>' tag)
 inject:
   head:
-    # - <link rel="stylesheet" href="/xxx.css">
+    - <link rel="stylesheet" href="/css/custom.css">
   bottom:
     # - <script src="xxxx"></script>
 

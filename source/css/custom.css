@@ -1,0 +1,51 @@
+/* 全局背景 */
+body {
+    background: #f5f6f8;
+}
+
+/* 顶部区域 */
+#page-header {
+    height: 50vh;
+    background-size: cover;
+    background-position: center;
+}
+
+/* 分类导航 */
+.nav-box {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+}
+
+    .nav-box a {
+        padding: 8px 15px;
+        background: white;
+        border-radius: 8px;
+        text-decoration: none;
+    }
+
+/* 卡片系统（资源站核心） */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+    }
