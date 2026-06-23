@@ -1,27 +1,13 @@
----
-title: 首页
----
+<div class="fly-banner">    <img src="/images/banner.jpg">    <div class="fly-title">        <h1>Magen</h1>        <p>游戏资源</p>    </div></div><div class="fly-nav">
 
-# 🚀 我的资源站
+<a href="/categories/PC">PC单机</a>
 
-<div class="nav-box">
-<a href="#">软件</a>
-<a href="#">游戏</a>
-<a href="#">工具</a>
-<a href="#">教程</a>
-</div>
+<a href="/categories/手游">手游</a>
 
-<div class="grid">
+<a href="/categories/VR">VR游戏</a>
 
-<div class="card">
-<img src="/img/1.jpg">
-<h3>资源标题1</h3>
-<p>简单介绍</p>
-</div>
+<a href="/categories/攻略">攻略</a>
 
-<div class="card">
-<img src="/img/2.jpg">
-<h3>资源标题2</h3>
-<p>简单介绍</p>
-</div>
+<a href="/categories/资源">资源</a>
+
 </div>

@@ -1,51 +1,466 @@
-/* 全局背景 */
-body {
-    background: #f5f6f8;
+/* ============================================================
+   flysheep 风格复刻 - Hexo Butterfly 主题
+   深黑 + 粉红配色
+   ============================================================ */
+
+/* ── 全局变量 ─────────────────────────────────────────────── */
+:root {
+    --pink: #e0537a;
+    --pink-light: #f472a0;
+    --pink-glow: rgba(224, 83, 122, 0.35);
+    --bg-deep: #090b12;
+    --bg-card: #111520;
+    --bg-card2: #161b28;
+    --border: rgba(255, 255, 255, 0.06);
+    --text-main: #e8eaf0;
+    --text-muted: #7a8099;
+    --radius: 14px;
 }
 
-/* 顶部区域 */
+/* ── 页面背景 ─────────────────────────────────────────────── */
+body,
+#body-wrap {
+    background: var(--bg-deep) !important;
+}
+
+/* ── Banner 全屏 ──────────────────────────────────────────── */
 #page-header {
-    height: 50vh;
-    background-size: cover;
-    background-position: center;
+    height: 100vh !important;
+    min-height: 600px;
 }
 
-/* 分类导航 */
-.nav-box {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    padding: 20px;
-}
-
-    .nav-box a {
-        padding: 8px 15px;
-        background: white;
-        border-radius: 8px;
-        text-decoration: none;
+    #page-header.full_page {
+        height: 100vh !important;
     }
 
-/* 卡片系统（资源站核心） */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    /* Banner 图片覆盖整个区域 */
+    #page-header .bg {
+        background-size: cover !important;
+        background-position: center center !important;
+        filter: brightness(0.75);
+    }
+
+    /* Banner 上的遮罩渐变，底部渐入深黑 */
+    #page-header::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 40%;
+        background: linear-gradient(to bottom, transparent, var(--bg-deep));
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    /* 站点信息居中 */
+    #page-header .site-info {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        z-index: 2;
+    }
+
+.site-info .site-title {
+    font-size: 3.2rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 6px !important;
+    color: #fff !important;
+    text-shadow: 0 0 30px var(--pink-glow), 0 2px 20px rgba(0,0,0,0.8);
 }
 
-.card {
-    background: white;
-    border-radius: 10px;
+.site-info .site-subtitle,
+.site-info #subtitle {
+    font-size: 1.1rem !important;
+    color: rgba(255,255,255,0.75) !important;
+    letter-spacing: 2px;
+    margin-top: 10px;
+}
+
+/* 向下箭头 */
+#page-header .scroll-down-bar,
+#page-header .down {
+    color: rgba(255,255,255,0.6) !important;
+    z-index: 2;
+}
+
+/* ── 导航栏 ───────────────────────────────────────────────── */
+#nav {
+    background: transparent !important;
+    box-shadow: none !important;
+    transition: background 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+    /* 滚动后导航栏出现磨砂背景 */
+    #nav.nav-fixed,
+    #nav.show {
+        background: rgba(9, 11, 18, 0.82) !important;
+        backdrop-filter: blur(16px) !important;
+        -webkit-backdrop-filter: blur(16px) !important;
+        box-shadow: 0 1px 0 var(--border) !important;
+    }
+
+    /* 导航链接 */
+    #nav .menus_items .menus_item a,
+    #nav .site-name {
+        color: #fff !important;
+        font-size: 0.88rem;
+        letter-spacing: 0.5px;
+    }
+
+        #nav .menus_items .menus_item:hover > a,
+        #nav .menus_items .menus_item a:hover {
+            color: var(--pink-light) !important;
+        }
+
+    /* 搜索图标 */
+    #nav #search-button i,
+    #nav .nav-right i {
+        color: #fff !important;
+    }
+
+/* 导航下拉菜单 */
+.menus_item_child {
+    background: rgba(17, 21, 32, 0.95) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 8px !important;
+}
+
+    .menus_item_child a {
+        color: var(--text-main) !important;
+    }
+
+        .menus_item_child a:hover {
+            color: var(--pink-light) !important;
+            background: rgba(224, 83, 122, 0.1) !important;
+        }
+
+/* ── 首页文章卡片 ──────────────────────────────────────────── */
+#recent-posts {
+    padding: 40px 0;
+}
+
+    #recent-posts .recent-post-item {
+        background: var(--bg-card) !important;
+        border: 1px solid var(--border) !important;
+        border-radius: var(--radius) !important;
+        overflow: hidden !important;
+        transition: transform 0.3s cubic-bezier(.25,.8,.25,1), box-shadow 0.3s cubic-bezier(.25,.8,.25,1) !important;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.4) !important;
+    }
+
+        #recent-posts .recent-post-item:hover {
+            transform: translateY(-8px) !important;
+            box-shadow: 0 16px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(224, 83, 122, 0.2) !important;
+        }
+
+/* 封面图区域 */
+.recent-post-item .post-cover,
+.recent-post-item .block-postcover {
     overflow: hidden;
-    transition: 0.2s;
+    border-radius: var(--radius) var(--radius) 0 0;
 }
 
-    .card:hover {
-        transform: translateY(-5px);
+    .recent-post-item .post-cover img,
+    .recent-post-item .block-postcover img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.5s ease !important;
     }
 
-    .card img {
-        width: 100%;
-        height: 140px;
-        object-fit: cover;
+.recent-post-item:hover .post-cover img,
+.recent-post-item:hover .block-postcover img {
+    transform: scale(1.06) !important;
+}
+
+/* 卡片内容区 */
+.recent-post-item .content {
+    padding: 18px 20px !important;
+    background: var(--bg-card) !important;
+}
+
+    /* 文章标题 */
+    .recent-post-item .content .article-title a {
+        color: var(--text-main) !important;
+        font-size: 1.05rem !important;
+        font-weight: 600 !important;
+        line-height: 1.4 !important;
+        transition: color 0.2s;
     }
+
+        .recent-post-item .content .article-title a:hover {
+            color: var(--pink-light) !important;
+        }
+
+    /* 文章摘要 */
+    .recent-post-item .content .article-content {
+        color: var(--text-muted) !important;
+        font-size: 0.875rem !important;
+        line-height: 1.6 !important;
+        margin-top: 8px !important;
+    }
+
+    /* 文章元信息（日期、分类） */
+    .recent-post-item .content .article-meta-wrap,
+    .recent-post-item .content .article-meta {
+        color: var(--text-muted) !important;
+        font-size: 0.8rem !important;
+    }
+
+        .recent-post-item .content .article-meta a {
+            color: var(--pink) !important;
+        }
+
+    /* "阅读更多" 按钮 */
+    .recent-post-item .content .article-btnmore a {
+        color: var(--pink) !important;
+        border-color: var(--pink) !important;
+        border-radius: 20px !important;
+        padding: 4px 16px !important;
+        font-size: 0.8rem !important;
+        transition: background 0.2s, color 0.2s;
+    }
+
+        .recent-post-item .content .article-btnmore a:hover {
+            background: var(--pink) !important;
+            color: #fff !important;
+        }
+
+/* ── 侧边栏 ───────────────────────────────────────────────── */
+#aside-content .card-widget {
+    background: var(--bg-card2) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius) !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+    overflow: hidden;
+}
+
+    /* 侧边栏标题 */
+    #aside-content .card-widget .item-headline,
+    #aside-content .card-widget .card-content .item-headline {
+        color: var(--text-main) !important;
+    }
+
+        #aside-content .card-widget .item-headline i {
+            color: var(--pink) !important;
+        }
+
+/* 作者卡片 */
+.card-author .author-info__name {
+    color: var(--text-main) !important;
+    font-size: 1.1rem !important;
+    font-weight: 600;
+}
+
+.card-author .author-info__description {
+    color: var(--text-muted) !important;
+}
+
+/* 头像发光效果 */
+#aside-content .avatar-img,
+.card-author img.avatar-img {
+    border-radius: 50% !important;
+    border: 2px solid var(--pink) !important;
+    box-shadow: 0 0 20px var(--pink-glow) !important;
+    transition: box-shadow 0.3s;
+}
+
+    #aside-content .avatar-img:hover {
+        box-shadow: 0 0 35px var(--pink-glow) !important;
+    }
+
+/* Follow 按钮 */
+.card-author .author-button-group a,
+.card-author .author-info__button a {
+    background: var(--pink) !important;
+    border-radius: 20px !important;
+    color: #fff !important;
+    border: none !important;
+    padding: 6px 20px !important;
+    font-size: 0.85rem !important;
+    transition: background 0.2s, transform 0.2s;
+}
+
+    .card-author .author-button-group a:hover {
+        background: var(--pink-light) !important;
+        transform: translateY(-2px);
+    }
+
+/* 侧边栏链接 */
+#aside-content a {
+    color: var(--text-muted) !important;
+    transition: color 0.2s;
+}
+
+    #aside-content a:hover {
+        color: var(--pink-light) !important;
+    }
+
+/* 标签 */
+#aside-content .card-tags .tags-item a {
+    background: rgba(224, 83, 122, 0.12) !important;
+    border: 1px solid rgba(224, 83, 122, 0.25) !important;
+    color: var(--pink-light) !important;
+    border-radius: 20px !important;
+    font-size: 0.78rem !important;
+    padding: 3px 12px !important;
+    transition: background 0.2s, transform 0.2s;
+}
+
+    #aside-content .card-tags .tags-item a:hover {
+        background: var(--pink) !important;
+        color: #fff !important;
+        transform: translateY(-2px);
+    }
+
+/* ── 通用文字颜色 ──────────────────────────────────────────── */
+body,
+p,
+.article-container {
+    color: var(--text-main) !important;
+}
+
+a {
+    color: var(--pink-light) !important;
+}
+
+/* ── 页脚 ─────────────────────────────────────────────────── */
+#footer {
+    background: #060810 !important;
+    border-top: 1px solid var(--border) !important;
+    color: var(--text-muted) !important;
+}
+
+    #footer a {
+        color: var(--pink) !important;
+    }
+
+/* ── 分页按钮 ─────────────────────────────────────────────── */
+.pagination .page-number.current,
+.pagination .prev,
+.pagination .next {
+    background: var(--pink) !important;
+    color: #fff !important;
+    border-radius: 8px !important;
+    border: none !important;
+}
+
+.pagination .page-number {
+    background: var(--bg-card2) !important;
+    color: var(--text-muted) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 8px !important;
+}
+
+/* ── 文章页面 ─────────────────────────────────────────────── */
+#post {
+    background: var(--bg-card) !important;
+    border-radius: var(--radius) !important;
+    border: 1px solid var(--border) !important;
+}
+
+/* 代码块 */
+figure.highlight {
+    background: #0d1117 !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+}
+
+/* 引用块 */
+blockquote {
+    border-left: 3px solid var(--pink) !important;
+    background: rgba(224, 83, 122, 0.06) !important;
+    color: var(--text-muted) !important;
+}
+
+/* ── 右下角按钮 ───────────────────────────────────────────── */
+#rightside .rightside-button {
+    background: var(--bg-card2) !important;
+    border: 1px solid var(--border) !important;
+    color: var(--text-main) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;
+}
+
+    #rightside .rightside-button:hover {
+        background: var(--pink) !important;
+        color: #fff !important;
+    }
+
+/* ── 搜索弹窗 ─────────────────────────────────────────────── */
+#local-search .local-search-popup {
+    background: var(--bg-card2) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius) !important;
+}
+
+#local-search input {
+    background: var(--bg-deep) !important;
+    color: var(--text-main) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 8px !important;
+}
+
+/* ── 目录 TOC ─────────────────────────────────────────────── */
+#aside-content #card-toc .toc-item.active > a {
+    color: var(--pink) !important;
+    border-left-color: var(--pink) !important;
+}
+
+/* ── 滚动条美化 ───────────────────────────────────────────── */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--pink);
+    border-radius: 3px;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--pink-light);
+    }
+
+/* ── 深色模式兼容 ─────────────────────────────────────────── */
+[data-theme="dark"] body,
+[data-theme="dark"] #body-wrap {
+    background: var(--bg-deep) !important;
+}
+
+[data-theme="dark"] .card-widget,
+[data-theme="dark"] #recent-posts .recent-post-item {
+    background: var(--bg-card) !important;
+}
+
+/* ── 网站名称飘逸草书字体 ── */
+#nav .site-name,
+#nav .brand {
+    font-family: 'Dancing Script', cursive !important;
+    font-size: 1.8rem !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    letter-spacing: 2px !important;
+    text-shadow: 0 0 20px var(--pink-glow), 0 2px 8px rgba(0,0,0,0.5) !important;
+}
+
+/* Banner 大标题 - 多选择器覆盖 */
+.site-info .site-title,
+#site-info .site-title,
+#page-header .site-title,
+#page-header h1,
+.site-title,
+#site-title {
+    font-family: 'Dancing Script', cursive !important;
+    font-size: 5rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 4px !important;
+    color: #fff !important;
+    text-shadow: 0 0 40px var(--pink-glow), 0 4px 20px rgba(0,0,0,0.8) !important;
+}

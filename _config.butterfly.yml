@@ -10,10 +10,11 @@
 # --------------------------------------
 
 # Navigation bar logo image
-logo:
-   display_title: true
-   display_post_title: true
 
+logo:
+  img:           # 留空或填图片路径
+  display_title: true
+  display_post_title: true
 # Whether to fix navigation bar
 fixed: false
 
@@ -162,7 +163,7 @@ index_layout: 3
 # 3: auto_excerpt (default)
 # false: do not show the article introduction
 index_post_content:
-  method: 3
+  method: 2
   # If you set method to 2 or 3, the length need to config
   length: 500
 
@@ -451,10 +452,11 @@ math:
 # --------------------------------------
 
 search:
-  # Choose: algolia_search / local_search / docsearch
-  # leave it empty if you don't need search
-  use:
-  placeholder:
+  use: local_search
+  placeholder: 搜索游戏...
+  local_search:
+    preload: true
+    top_n_per_article: 1
 
   # Algolia Search
   algolia_search:
@@ -462,8 +464,7 @@ search:
     hitsPerPage: 6
 
   # Local Search
-  local_search:
-    # Preload the search data when the page loads.
+      # Preload the search data when the page loads.
     preload: false
     # Show top n results per article, show all results by setting to -1
     top_n_per_article: 1
@@ -784,7 +785,7 @@ preloader:
 enter_transitions: true
 
 # Default display mode - light (default) / dark
-display_mode: light
+display_mode: dark
 
 # Configuration for beautifying the content of the article
 beautify:
@@ -1038,6 +1039,7 @@ css_prefix: true
 inject:
   head:
     - <link rel="stylesheet" href="/css/custom.css">
+    - <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
   bottom:
     # - <script src="xxxx"></script>
 
@@ -1113,26 +1115,19 @@ CDN:
     # valine:
     # waline_css:
     # waline_js:
-# 顶部导航菜单
+# 你现在写的（缩进用了空格不一致，且格式错误）
+
+# 正确写法，图标是必要的格式
 menu:
   首页: / || fas fa-home
-  档案: /archives || fas fa-archive
-  分类: /categories || fas fa-th-list
-  标签: /tags || fas fa-search
+  PC单机大作: /categories/PC单机/ || fas fa-desktop
+  小游戏/独立游戏: /categories/小游戏/ || fas fa-gamepad
+  VR游戏: /categories/VR游戏/ || fas fa-vr-cardboard
+  模拟经营游戏: /categories/模拟经营/ || fas fa-store
+  攻略: /categories/攻略/ || fas fa-map
 
-# 右侧侧边栏
-sidebar:
-  position: right
-  display: post
-  card_layout:
-    - archives
-    - newest_post
+# 卡片圆角
+card_border_radius: 12px
 
-# 首页文章卡片
-index_post_list:
-  layout: card
-  cover: true
 
-# 网站标题文字
-site_title: 游戏资源攻略站
 
