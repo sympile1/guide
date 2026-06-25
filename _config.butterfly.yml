@@ -79,7 +79,7 @@ background: "#0b101a"
 cover:
   # Disable the cover or not
   index_enable: true
-  aside_enable: true
+  aside_enable: false
   archives_enable: true
   # When cover is not set, the default cover is displayed
   default_cover: https://bpic.588ku.com/back_our/20210529/bg/aa60a98c4b97e292ff8f72963d3c7db6_17267.png
@@ -1041,7 +1041,62 @@ inject:
     - <link rel="stylesheet" href="/css/custom.css">
     - <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
   bottom:
-    # - <script src="xxxx"></script>
+    - <div id="fs-chara"><img src="/img/chara.png" alt=""/></div>
+    - <script src="/js/carousel.js"></script>
+    - |
+      <div id="fs-nav-bar">
+        <a class="fs-nav-item active" href="/">首页</a>
+        <a class="fs-nav-item" href="/categories/PC单机/">PC单机大作</a>
+        <a class="fs-nav-item" href="/categories/小游戏/">小游戏/独立游戏</a>
+        <a class="fs-nav-item" href="/categories/VR游戏/">VR游戏</a>
+        <a class="fs-nav-item" href="/categories/模拟经营/">模拟经营游戏</a>
+        <a class="fs-nav-item" href="/categories/攻略/">攻略</a>
+      </div>
+    - |
+      <div id="fs-section-header">
+        <div class="fs-section-title">最新游戏</div>
+        <a class="fs-section-more" href="/archives/">查看更多 →</a>
+      </div>
+    - |
+      <div id="fs-carousel-wrap">
+        <div class="fs-carousel-container">
+          <button class="fs-carousel-prev">&#8249;</button>
+          <div class="fs-carousel-viewport">
+            <div class="fs-carousel-track">
+
+              <div class="fs-carousel-item">
+                <a href="/你的文章链接/">
+                  <div class="fs-card-img">
+                    <img src="/img/gotham.jpg" alt="哥谭骑士"/>
+                  </div>
+                  <div class="fs-card-info">
+                    <span class="fs-card-cat">PC单机大作</span>
+                    <div class="fs-card-title">哥谭骑士 全DLC中文版完整攻略</div>
+                    <div class="fs-card-date">2026年 6月 23日</div>
+                  </div>
+                </a>
+              </div>
+
+              <div class="fs-carousel-item">
+                <a href="/你的文章链接/">
+                  <div class="fs-card-img">
+                    <img src="/img/elden.jpg" alt="艾尔登法环"/>
+                  </div>
+                  <div class="fs-card-info">
+                    <span class="fs-card-cat">PC单机大作</span>
+                    <div class="fs-card-title">艾尔登法环 全收集速刷路线</div>
+                    <div class="fs-card-date">2026年 6月 20日</div>
+                  </div>
+                </a>
+              </div>
+
+              <!-- 继续复制添加更多卡片 -->
+
+            </div>
+          </div>
+          <button class="fs-carousel-next">&#8250;</button>
+        </div>
+      </div>
 
 # CDN Settings
 # Don't modify the following settings unless you know how they work
